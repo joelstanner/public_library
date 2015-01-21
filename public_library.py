@@ -12,10 +12,12 @@ other) app - just a single file with three classes (plus commands at the bottom
 showing it works) is all that is needed. In addition to pushing this python file
 to your Github account, please also setup a http://repl.it/languages/Python (so
 it runs there) and enter the saved URL here.
+
+https://github.com/poolbath1/public_library
+http://repl.it/87c/2
 """
 
-from __future__ import print_function
-import json
+import json, random
 
 
 class Library(object):
@@ -51,7 +53,8 @@ class Book(Shelf, Library):
         self.book = book
 
     def enshelf(self, shelf):
-        pass
+        """enshelven the book unto a new shelf"""
+        self.shelf = shelf
 
     def unshelf(self):
         """unshelf checks out the book"""
@@ -82,8 +85,16 @@ libraries = [Library(library) for library in set(libraries)]
 # call the list_books Library method to see what books are in the library:
 template = "{0:50}{1:15}"
 for lib in range(len(libraries)):
-    print((libraries[lib].library + "'s book list\n").upper())
-    print(template.format("BOOK TITLE", "SHELF\n"))
-    for rec in sorted(libraries[lib].list_books()):
-        print(template.format(*rec))
-    print("\n-------\n\n")
+    print (libraries[lib].library + "'s book list\n").upper()
+    print template.format("BOOK TITLE", "SHELF\n")
+    for book, shelf in sorted(libraries[lib].list_books()):
+        print template.format(str(book), str(shelf))
+    print "\n-------\n\n"
+
+# pick a random book, unshelf it, then enshelf it
+
+rnd_book = books[random.randint(0, len(sample_data))]
+rnd_book.unshelf()
+print rnd_book.book + "\t", rnd_book.shelf, "   should be 'Checked-out'"
+rnd_book.enshelf('Fiction')
+print rnd_book.book + "\t", rnd_book.shelf, "       should be 'Fiction'"

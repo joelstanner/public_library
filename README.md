@@ -12,3 +12,6 @@ other) app - just a single file with three classes (plus commands at the bottom
 showing it works) is all that is needed. In addition to pushing this python file
 to your Github account, please also setup a http://repl.it/languages/Python (so
 it runs there) and enter the saved URL here.
+
+https://github.com/poolbath1/public_library
+http://repl.it/87c/2
